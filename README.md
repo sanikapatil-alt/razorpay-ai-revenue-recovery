@@ -197,27 +197,44 @@ The current production model was not automatically replaced.
 
 ### Business policy test
 
-On a held-out set of 700 payments:
+On a completely held-out set of 700 payments, the model was trained using
+2,800 other payments with zero payment-ID overlap between training and test.
 
 | Policy | Recovery Rate | Net Recovery |
 |---|---:|---:|
-| AI expected-net-recovery | 56.86% | ₹2,060,322 |
-| Highest probability | 56.71% | ₹2,062,294 |
-| Historical best action | 45.00% | ₹1,643,393 |
-| Random allowed action | 41.43% | ₹1,523,300 |
-| Random action | 41.86% | ₹1,447,746 |
+| AI expected-net-recovery | 57.14% | ₹2,099,003 |
+| Highest probability | 56.71% | ₹2,091,482 |
+| Historical best action | 45.00% | ₹1,670,031 |
+| Random allowed action | 43.14% | ₹1,580,286 |
+| Oracle upper bound | 86.29% | ₹3,124,572 |
 
-The AI policy produced a ₹612,575 higher net recovery than the random-action baseline in this test.
+Against the random-allowed baseline, the AI policy produced approximately
+₹518,716 higher net recovery on the held-out batch, corresponding to a
+32.82% relative improvement.
 
-That corresponds to a 42.31% improvement over the random baseline.
+A paired bootstrap comparison of AI expected-net-recovery versus the
+random-allowed policy produced a 95% confidence interval of:
+
+    ₹418.25 to ₹1,062.26 per payment
 
 ### Important interpretation
 
-The direct comparison between expected-net optimization and highest-probability selection was not statistically decisive.
+The direct comparison between expected-net optimization and
+highest-probability selection was not statistically decisive.
 
 A paired bootstrap test produced a 95% confidence interval of approximately:
 
-    -₹28.85 to ₹16.42
+    -₹29.22 to ₹49.02 per payment
+
+Therefore, the project does not claim that expected-net optimization is
+statistically superior to probability ranking.
+
+This is intentional: the evaluation is reported without overstating the
+result.
+
+> **Important:** The dataset is synthetic and the recovery outcomes are
+> simulated for offline evaluation. These numbers do not represent confirmed
+> Razorpay customer payments or real recovered revenue.
 
 Therefore, the project does not claim that expected-net optimization is statistically superior to probability ranking.
 
