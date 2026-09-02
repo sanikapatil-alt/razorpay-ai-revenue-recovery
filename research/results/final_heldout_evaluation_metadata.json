@@ -1,0 +1,29 @@
+{
+  "dataset": "C:\\Users\\Admin\\Downloads\\razorpay_revenue_recovery\\data\\recovery_training_data.csv",
+  "dataset_rows": 14000,
+  "unique_payments": 3500,
+  "training_payments": 2800,
+  "test_payments": 700,
+  "payment_overlap": 0,
+  "random_state": 42,
+  "test_size": 0.2,
+  "bootstrap_iterations": 5000,
+  "low_probability_threshold": 0.25,
+  "actions": [
+    "payment_link",
+    "reminder",
+    "retry",
+    "escalate"
+  ],
+  "bootstrap_ai_minus_probability": {
+    "mean": 10.744190714285716,
+    "ci_low": -29.216686053571426,
+    "ci_high": 49.01562207142851
+  },
+  "bootstrap_ai_minus_random_allowed": {
+    "mean": 741.0235357142857,
+    "ci_low": 418.25037201785705,
+    "ci_high": 1062.2566712499997
+  },
+  "note": "Held-out evaluation uses observed synthetic outcomes from payment/action pairs that were not used for training. No real Razorpay transactions are executed."
+}
